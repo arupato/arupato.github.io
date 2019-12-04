@@ -72,12 +72,12 @@
     <small id='uploadText'>上传头像</small>
     <input id='upload' type='file' onchange='viewer()' style='height: 10rem; width: 10rem; position: absolute; top: 0; left: 0; opacity: 0'>
   </div>
-  <img id='export' alt='' src='' />
+  <img id='export' alt='圣诞快乐' src='' />
   <canvas id='cvs'></canvas>
   <p id='tip' style='opacity: 0'></p>
   <div class='footer'> 
     <button id='exportBtn' onClick='exportFunc()'>生成头像</button>
-     <a onClick='javascript:location.href='arupato.github.io''>重来</a> 
+    <!-- <a onClick='reUpload()'>重来</a> -->
   </div>
  
   <div style='display: none'>
@@ -118,8 +118,8 @@
   canvasFabric=new fabric.Canvas("cvs",{
   width:screenWidth,height:screenWidth,backgroundImage:new fabric.Image(
   
-  img,{scaleX:cvs.width,
-  scaleY:cvs.height})});
+  img,{scaleX:screenWidth/img.width,
+  scaleY:screenWidth/img.height})});
   changef();
   document.getElementById("uploadContainer").style.display="none";
   document.getElementById("uploadText").style.display="none";document.getElementById("upload").style.display="none";
@@ -127,7 +127,8 @@
   document.getElementById("tip").style.opacity=1}function changef(){document.getElementById(f).style.display="none";
   var fs=document.getElementsByClassName("hide");f="f"+(+f.replace("f","")+1)%fs.length;var fImage=document.getElementById(f);
   fImage.style.display="block";if(fInstance){canvasFabric.remove(fInstance)}fInstance=new fabric.Image(fImage,{
-  top:0,left:0,cornerColor:"#0b3a42",
+  top:0,left:0,scaleX:screenWidth/fImage.width,
+  scaleY:screenWidth/fImage.width,cornerColor:"#0b3a42",
   cornerStrokeColor:"#fff",cornerStyle:"circle",
   transparentCorners:false,rotatingPointOffset:30});fInstance.setControlVisible("bl",false);
   fInstance.setControlVisible("tr",false);fInstance.setControlVisible("tl",false);fInstance.setControlVisible("mr",false);fInstance.setControlVisible("mt",false);
