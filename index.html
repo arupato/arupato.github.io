@@ -77,7 +77,7 @@
   <p id='tip' style='opacity: 0'></p>
   <div class='footer'> 
     <button id='exportBtn' onClick='exportFunc()'>生成头像</button>
-    <!-- <a onClick='reUpload()'>重来</a> -->
+     <a onClick='reUpload()'>重来</a> 
   </div>
  
   <div style='display: none'>
@@ -118,8 +118,8 @@
   canvasFabric=new fabric.Canvas("cvs",{
   width:screenWidth,height:screenWidth,backgroundImage:new fabric.Image(
   
-  img,{scaleX:screenWidth/img.width,
-  scaleY:screenWidth/img.height})});
+  img,{scaleX:screenWidth,
+  scaleY:screenWidth})});
   changef();
   document.getElementById("uploadContainer").style.display="none";
   document.getElementById("uploadText").style.display="none";document.getElementById("upload").style.display="none";
