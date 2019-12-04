@@ -1,0 +1,137 @@
+<!DOCTYPE  html>
+<html lang='en'>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta charset='UTF-8'>
+  <meta name='viewport' content='width=device-width,maximum-scale=1.0,minimum-scale=1.0'>
+  <meta http-equiv='X-UA-Compatible' content='ie=edge'>
+  <link rel="shortcut icon" href="http://www.iyu.pub/favicon.ico">
+  <title></title>
+  <style>
+    body {
+      font-size: 20px;
+      text-align: center;
+      margin: 0;
+    }
+    label {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      font-size: 10px;
+    }
+    .header {
+      color: #108757;
+      height: 3rem;
+    }
+    #cvs {
+      display: none;
+      margin: 0 auto;
+    }
+    .canvas-container {
+      margin: 0 auto;
+    }
+    .hide, #exportBtn {
+      display: none;
+    }
+    .body {
+      margin: 4rem auto 3rem;
+      height: 10rem;
+      width: 10rem;
+      border: solid 1px #aaa;
+      box-shadow: 0 0 5px #aaa;
+      border-radius: 1rem;
+      line-height: 10rem;
+      position: relative;
+    }
+    #export {
+      display: none;
+      margin: 0 auto;
+      width: 250px;
+      height: 250px;
+    }
+    .footer {
+      display: flex;
+      justify-content: space-around;
+    }
+    button {
+      font-size: 18px;
+      color: #fff;
+      padding: 0 30px;
+      height: 2.3rem;
+      background: #8fd16f;
+      border: 0;
+      border-radius: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div class='header'>
+    <h2>minato</h2>
+  </div>
+  <div class='body' id='uploadContainer'>
+    <small id='uploadText'>上传头像</small>
+    <input id='upload' type='file' onchange='viewer()' style='height: 10rem; width: 10rem; position: absolute; top: 0; left: 0; opacity: 0'>
+  </div>
+  <img id='export' alt='' src='' />
+  <canvas id='cvs'></canvas>
+  <p id='tip' style='opacity: 0'></p>
+  <div class='footer'> 
+    <button id='exportBtn' onClick='exportFunc()'>生成头像</button>
+    <!-- <a onClick='reUpload()'>重来</a> -->
+  </div>
+ 
+  <div style='display: none'>
+    <img id='img' src='' alt='' />
+    <img class='hide' id='f0' src='./f0.png' />
+    <img class='hide' id='f1' src='./f1.png' />
+    <img class='hide' id='f2' src='./f2.png' />
+    <img class='hide' id='f3' src='./f3.png' />
+    <img class='hide' id='f4' src='./f4.png' />
+    <img class='hide' id='f5' src='./f5.png' />
+    <img class='hide' id='f6' src='./f6.png' />
+    <img class='hide' id='f7' src='./f7.png' />
+    <img class='hide' id='f8' src='./f8.png' />
+    <img class='hide' id='f9' src='./f9.png' />
+  </div>
+
+<script src="https://cdn.bootcss.com/fabric.js/2.0.0-rc.3/fabric.min.js"></script>
+<script>
+  var cvs=document.getElementById("cvs");
+  var ctx=cvs.getContext("2d");
+  var exportImage=document.getElementById("export");
+  var img=document.getElementById("img");
+  var f="f0";
+  var canvasFabric;
+  var fInstance;
+  var screenWidth=window.screen.width<500?window.screen.width:300;
+  function viewer(){var file=document.getElementById("upload").files[0];
+  console.log(file);
+  var reader=new FileReader;
+  if(file){reader.readAsDataURL(file);
+  reader.onload=function(e){
+  img.src=reader.result;
+  img.onload=function(){img2Cvs(img)}}}else{img.src=""}}
+  function img2Cvs(img){
+  cvs.width=img.width;
+  cvs.height=img.height;
+  cvs.style.display="block";
+  canvasFabric=new fabric.Canvas("cvs",{
+  width:screenWidth,height:screenWidth,backgroundImage:new fabric.Image(
+  
+  img,{scaleX:screenWidth/img.width,
+  scaleY:screenWidth/img.height})});
+  changef();
+  document.getElementById("uploadContainer").style.display="none";
+  document.getElementById("uploadText").style.display="none";document.getElementById("upload").style.display="none";
+  document.getElementById("change").style.display="block";document.getElementById("exportBtn").style.display="block";
+  document.getElementById("tip").style.opacity=1}function changef(){document.getElementById(f).style.display="none";
+  var fs=document.getElementsByClassName("hide");f="f"+(+f.replace("f","")+1)%fs.length;var fImage=document.getElementById(f);
+  fImage.style.display="block";if(fInstance){canvasFabric.remove(fInstance)}fInstance=new fabric.Image(fImage,{
+  top:0,left:0,cornerColor:"#0b3a42",
+  cornerStrokeColor:"#fff",cornerStyle:"circle",
+  transparentCorners:false,rotatingPointOffset:30});fInstance.setControlVisible("bl",false);
+  fInstance.setControlVisible("tr",false);fInstance.setControlVisible("tl",false);fInstance.setControlVisible("mr",false);fInstance.setControlVisible("mt",false);
+  canvasFabric.add(fInstance)}function exportFunc(){document.getElementsByClassName("canvas-container")[0].style.display="none";document.getElementById("exportBtn").style.display="none";document.getElementById("tip").innerHTML="长按图片保存或分享";document.getElementById("change").style.display="none";cvs.style.display="none";exportImage.style.display="block";exportImage.src=canvasFabric.toDataURL({width:screenWidth,height:screenWidth})}
+</script>
+</body>
+</html>
