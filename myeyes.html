@@ -6,11 +6,10 @@
 <script>
 
     var num = 3;
-    setTimeout("appendText()", 3000)
     $(document).ready(function () {
         appendText();
 
-        $("img").width(document.body.clientWidth / (num +1));
+        $("img").width(document.body.clientWidth / (num + 1));
     });
     $("img#syoya").click(function () { clearText(); });
     function appendText() {
@@ -26,14 +25,16 @@
 
             $("#galleria").append(txtj);
         }
-        $("img").width(document.body.clientWidth / (num + 1))
+        $("img").width(document.body.clientWidth / (num + 1));
+
+        $("img").css({ "border":"3","bordercolor":"#FFFFFF" });
         $("#galleria").fadeIn("slow");
 
     }
     function clearText() {
         $("#galleria").empty();
 
-        $("#number").val(num - 3);
+        $("#number").val(num - 2);
         num++;
         appendText();
     }
@@ -44,8 +45,9 @@
 <div></div>
 <!-- 图片展示所在DIV -->  
     <div id = "gamelevel">
-    <h1><p id="number">1</p></h1>
+    <input id="number" disabled="disabled" value =0 size=2> 分
     </div>
+    <br><br>
     <div id="contentImgs" class="contentImgsClass">  
                 <!-- 设置标题文字 -->  
                 <div id="galleria">  
