@@ -16,10 +16,10 @@
         var txtj = "<img id=\"junki\"  src=\"images/junki.jpg\" />";
         var txtk = "<a href=\"javascript:clearText();\"><img title=\"syoya\"  src=\"images/syoya.jpg\" /></a>";
 
-        var r = parseInt(Math.random() * (num )*num-1);
+        var r = parseInt(Math.random() * (num )*num-2);
         $("#galleria").fadeOut();
         for (i = 0; i < (num*num-2) ; i++) {
-            if (i == r) {
+            if (i == r & i!=0) {
                 $("#galleria").append(txtk); 
             }
 
