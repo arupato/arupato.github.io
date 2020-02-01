@@ -1,0 +1,54 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js">
+</script>
+<script>
+
+    var num = 48;
+    $(document).ready(function () { 
+            appendText();
+       
+        $("img").width(document.body.clientWidth/8)
+    });
+    $("img#syoya").click(function () { clearText(); });
+    function appendText() {
+        var txtj = "<img id=\"junki\"  src=\"images/junki.jpg\" />";
+        var txtk = "<a href=\"javascript:clearText();\"><img title=\"syoya\"  src=\"images/syoya.jpg\" /></a>";
+ 
+        var r = parseInt(Math.random()*(num-3)+ 1);
+        for (i = 0; i < (num - 1) ; i++) {
+            if (i == r) {
+                $("#galleria").append(txtk); 
+            }
+
+            $("#galleria").append(txtj);
+        } 
+        $("img").width(document.body.clientWidth /8)
+    }
+    function clearText() {
+        $("#galleria").empty();
+        
+        $("#gamelevel").val(num - 3);
+        
+        appendText();
+    }
+</script>
+    <title></title>
+</head>
+<body>
+<div></div>
+<!-- 图片展示所在DIV -->  
+    <div id = "gamelevel">
+    <h1><p id="number">1</p></h1>
+    </div>
+    <div id="contentImgs" class="contentImgsClass">  
+                <!-- 设置标题文字 -->  
+                <div id="galleria">  
+                </div>  
+                <!-- 设置底部文字 -->  
+                <p class="cred"></p>  
+            </div>  
+        </div>  
+</body>
+</html>
