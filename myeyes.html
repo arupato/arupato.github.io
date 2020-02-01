@@ -5,32 +5,36 @@
 </script>
 <script>
 
-    var num = 48;
-    $(document).ready(function () { 
-            appendText();
-       
-        $("img").width(document.body.clientWidth/8)
+    var num = 3;
+    setTimeout("appendText()", 3000)
+    $(document).ready(function () {
+        appendText();
+
+        $("img").width(document.body.clientWidth / (num +1));
     });
     $("img#syoya").click(function () { clearText(); });
     function appendText() {
         var txtj = "<img id=\"junki\"  src=\"images/junki.jpg\" />";
         var txtk = "<a href=\"javascript:clearText();\"><img title=\"syoya\"  src=\"images/syoya.jpg\" /></a>";
- 
-        var r = parseInt(Math.random()*(num-3)+ 1);
-        for (i = 0; i < (num - 1) ; i++) {
+
+        var r = parseInt(Math.random() * (num )*num);
+        $("#galleria").fadeOut();
+        for (i = 0; i < (num*num) ; i++) {
             if (i == r) {
                 $("#galleria").append(txtk); 
             }
 
             $("#galleria").append(txtj);
-        } 
-        $("img").width(document.body.clientWidth /8)
+        }
+        $("img").width(document.body.clientWidth / (num + 1))
+        $("#galleria").fadeIn("slow");
+
     }
     function clearText() {
         $("#galleria").empty();
-        
-        $("#gamelevel").val(num - 3);
-        
+
+        $("#number").val(num - 3);
+        num++;
         appendText();
     }
 </script>
