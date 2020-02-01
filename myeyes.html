@@ -17,9 +17,9 @@
         var txtj = "<img id=\"junki\"  src=\"images/junki.jpg\" />";
         var txtk = "<a href=\"javascript:clearText();\"><img title=\"syoya\"  src=\"images/syoya.jpg\" /></a>";
 
-        var r = parseInt(Math.random() * (num )*num);
+        var r = parseInt(Math.random() * (num )*num-1);
         $("#galleria").fadeOut();
-        for (i = 0; i < (num*num) ; i++) {
+        for (i = 0; i < (num*num-2) ; i++) {
             if (i == r) {
                 $("#galleria").append(txtk); 
             }
