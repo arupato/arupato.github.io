@@ -6,17 +6,27 @@
 <script>
 
     var num = 3;
+    var txtj = "<img id=\"junki\"  src=\"images/junki.jpg\" />";
+    var txtk = "<a href=\"javascript:clearText();\"><img title=\"syoya\"  src=\"images/syoya.jpg\" /></a>";
+    var gmode = 1;
     $(document).ready(function () {
         appendText();
 
         $("img").width(document.body.clientWidth / (num + 1));
+        $("button").click(function () {
+            gmode = 1 - gmode;
+            num--;
+            clearText();
+        });
     });
-    $("img#syoya").click(function () { clearText(); });
-    function appendText() {
-        var txtj = "<img id=\"junki\"  src=\"images/junki.jpg\" />";
-        var txtk = "<a href=\"javascript:clearText();\"><img title=\"syoya\"  src=\"images/syoya.jpg\" /></a>";
 
-        var r = parseInt(Math.random() * (num*num-2));
+    
+    function appendText() {
+        if (gmode == 0) {
+             txtk = "<a  href=\"javascript:clearText();\"><img id=\"junki\"  src=\"images/junki.jpg\" /></a>";
+             txtj = "<img title=\"syoya\"  src=\"images/syoya.jpg\" />";
+        }
+        var r = parseInt(Math.random() * (num * num - 2));
         $("#galleria").fadeOut();
         for (i = 0; i < (num*num-2) ; i++) {
             if (i == r ) {
@@ -33,9 +43,9 @@
     }
     function clearText() {
         $("#galleria").empty();
-
-        $("#number").val(num - 2);
         num++;
+        $("#number").val(num - 2);
+        
         appendText();
     }
 </script>
@@ -45,7 +55,7 @@
 <div></div>
 <!-- 图片展示所在DIV -->  
     <div id = "gamelevel">
-    <input id="number" disabled="disabled" value =0 size=2> 分
+    <input id="number" disabled="disabled" value =0 size=2> 分        <button>切换</button>
     </div>
     <br><br>
     <div id="contentImgs" class="contentImgsClass">  
