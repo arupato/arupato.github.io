@@ -13,14 +13,22 @@
         appendText();
 
         $("img").width(document.body.clientWidth / (num + 1));
-        
+        $("button").click(function () {
+            gmode = 1 - gmode;
+            num--;
+            clearText();
+        });
     });
 
     
     function appendText() {
         if (gmode == 0) {
-             txtk = "<a  href=\"javascript:clearText();\"><img id=\"junki\"  src=\"images/junki.jpg\" /></a>";
-             txtj = "<img title=\"syoya\"  src=\"images/syoya.jpg\" />";
+            txtk = "<a  href=\"javascript:clearText();\"><img id=\"junki\"  src=\"images/junki.jpg\" /></a>";
+            txtj = "<img title=\"syoya\"  src=\"images/syoya.jpg\" />";
+        }
+        else {
+            txtj = "<img id=\"junki\"  src=\"images/junki.jpg\" />";
+            txtk = "<a  href=\"javascript:clearText();\"><img title=\"syoya\"  src=\"images/syoya.jpg\" /></a>";
         }
         var r = parseInt(Math.random() * (num * num - 2));
         $("#galleria").fadeOut();
