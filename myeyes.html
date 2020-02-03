@@ -7,7 +7,7 @@
 
     var num = 3;
     var txtj = "<img id=\"junki\"  src=\"images/junki.jpg\" />";
-    var txtk = "<a href=\"javascript:clearText();\"><img title=\"syoya\"  src=\"images/syoya.jpg\" /></a>";
+    var txtk = "<a href=\"javascript:clearText();\"><img id=\"syoya\"  src=\"images/syoya.jpg\" /></a>";
     var gmode = 1;
     $(document).ready(function () {
         appendText();
@@ -28,7 +28,7 @@
         }
         else {
             txtj = "<img id=\"junki\"  src=\"images/junki.jpg\" />";
-            txtk = "<a  href=\"javascript:clearText();\"><img title=\"syoya\"  src=\"images/syoya.jpg\" /></a>";
+            txtk = "<a  href=\"javascript:clearText();\"><img id=\"syoya\"  src=\"images/syoya.jpg\" /></a>";
         }
         var r = parseInt(Math.random() * (num * num - 2));
         $("#galleria").fadeOut();
