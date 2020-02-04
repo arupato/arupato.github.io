@@ -1,0 +1,163 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+    <script src="http://www.jq22.com/jquery/bootstrap-3.3.4.js"></script> 
+<script>
+    var mlist = [
+"豆原一成",
+"川尻蓮",
+"川西拓実",
+"大平祥生",
+"鶴房汐恩",
+"白岩瑠姫",
+"佐藤景瑚",
+"木全翔也",
+"河野純喜",
+"金城碧海",
+"與那城奨",
+"宮島優心",
+"大澤駿弥",
+"安藤誠明",
+"本田康祐",
+"佐藤來良",
+"今西正彦",
+"井上港人",
+"床波志音",
+"上原潤",
+"青木聖波",
+"安慶田真樹",
+"アルジャマ勇心",
+"安藤優",
+"李珉赫",
+"井汲大翔",
+"池本正義",
+"石井健太郎",
+"石井祐輝",
+"五十畑颯斗",
+"稲吉ひかり",
+"岩崎琉斗",
+"内田脩斗",
+"浦野秀太",
+"大川澪哉",
+"大水陸渡",
+"岡田武大",
+"岡野海斗",
+"男澤直樹",
+"片上勇士",
+"菅野雅浩",
+"北岡謙人",
+"北川暉",
+"北川玲叶",
+"木原汰一",
+"草地稜之",
+"古特雷斯健",
+"熊澤歩哉",
+"黒川竜聖",
+"古賀一馬",
+"駒尺雄樹",
+"小松倖真",
+"佐々木真生",
+"佐藤隆士",
+"佐野文哉",
+"鈴木晨順",
+"鈴木雅",
+"鈴木玄",
+"髙野慧",
+"瀧澤翼",
+"田口馨也",
+"田中雄也",
+"寺師敬",
+"東郷良樹",
+"中川吟亮",
+"中川勝就",
+"中里空",
+"中谷日向",
+"中西直樹",
+"中野龍之介",
+"中林登生",
+"中本大賀",
+"西涼太郎",
+"西尾航暉",
+"西野友也",
+"西山和貴",
+"長谷川怜央",
+"秦健豪",
+"林龍太",
+"福地正",
+"古屋亮人",
+"松倉悠",
+"磨田寛大",
+"三井瞭",
+"宮里龍斗志",
+"森慎二郎",
+"山田聡",
+"山田恭",
+"山本健太",
+"結城樹",
+"米原尚平",
+"渡邊公貴",
+"渡邊大貴",
+"渡辺龍星",
+"片山湧貴",
+"金熙天",
+"金润东",
+"小山省吾",
+"佐藤一翔",
+"郑永勋",
+"畑顕矢",
+];
+    function btnselect_onclick() {
+
+    var mobi = parseInt($("#PCOUNT").val());
+    if (mobi > 11) {
+        mobi = 11;
+    }
+    else if (mobi < 1)
+    { mobi = 1; }
+    var total = parseInt($("input:radio[name=R1]:checked").val());
+
+    var templist = mlist.slice();
+    $("#TextArea1").val("");
+    for (i = 0; i < mobi; i++) {
+        var r = parseInt(Math.random() * (total-i));
+        
+        $("#TextArea1").val($("#TextArea1").val() + templist.splice(r, 1)  + "\n");
+    }
+        
+}
+
+</script>
+    <style type="text/css">
+        #TextArea1
+        {
+            height: 168px;
+            width: 162px;
+        }
+        #Text1
+        {
+            width: 30px;
+        }
+        #PCOUNT
+        {
+            width: 48px;
+        }
+    </style>
+</head>
+<body> 
+<div> 
+    <p>
+        <input id="Radio1" value="11" checked="checked" name="R1" type="radio" />JO1 
+        <input id="Radio2" value="101"  name="R1" type="radio" />101人 
+        中抽取：<input id="PCOUNT" type="text" 
+            onkeyup="this.value=this.value.replace(/\D/g,'')" 
+            onafterpaste="this.value=this.value.replace(/\D/g,'')" value="1" />人(1~11)</p>
+    <p>
+        <input id="btnselect" type="button" 
+            value="抽取" onclick="return btnselect_onclick()" /></p>
+    <p>
+        <textarea id="TextArea1" name="S1"></textarea></p>
+</div> 
+</body>
+</html>
