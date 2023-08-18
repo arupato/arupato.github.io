@@ -23,6 +23,6 @@ function init() {
     $("#meaning").html(word_data[num]["romanized"]);
     $("#english").html(word_data[num]["english"]);
   });
-}
-
+} 
+setInterval(init, 5000);
 window.onload = init;
