@@ -24,5 +24,5 @@ function init() {
     $("#english").html(word_data[num]["english"]);
   });
 } 
-setInterval(init, 6000);
+setInterval(init, 7000);
 window.onload = init;
